@@ -38,3 +38,46 @@ const merge = (left, right) => {
 const arr1 = [29, 10, 8, 16, 37, 14, 4, 45];
 console.log(mergeSort(arr1));
 
+
+
+const mergeSortInplace = (arr, low, high) => {
+    if (low < high) {
+        let mid = Math.floor((low + high) / 2);
+        mergeSortInplace(arr, low, mid)
+        mergeSortInplace(arr, mid + 1, high)
+        mergeInplace(arr, low, mid, high)
+    }
+}
+
+const mergeInplace = (arr, low, mid, high) => {
+    const result = []
+    let leftIndex = low, rightIndex = mid + 1;
+    while (leftIndex <= mid && rightIndex <= high) {
+        if (arr[leftIndex] < arr[rightIndex]) {
+            result.push(arr[leftIndex])
+            leftIndex++;
+        }
+        else {
+            result.push(arr[rightIndex])
+            rightIndex++;
+        }
+    }
+
+    while (leftIndex <= mid) {
+        result.push(arr[leftIndex])
+        leftIndex++;
+    }
+
+    while (rightIndex <= high) {
+        result.push(arr[rightIndex])
+        rightIndex++;
+    }
+
+    for (let i = low; i <= high; i++) {
+        arr[i] = result[i - low];
+    }
+}
+
+// const arr1 = [29, 10, 8, 16, 37, 14, 4, 45]
+console.log(mergeSortInplace(arr1, 0, arr.length - 1))
+console.log(arr1)
