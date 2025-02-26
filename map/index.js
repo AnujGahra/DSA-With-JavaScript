@@ -59,3 +59,66 @@ console.timeEnd("Map Time")
 
 
 // WeakMap in JavaScript
+
+const map2 = new Map();
+let obj2 = {"name":"Vishal"}
+map2.set(obj2, "metadata")
+console.log(map2)
+
+obj2 = null
+
+console.log(map2);
+
+let Weakmap = new WeakMap();
+Weakmap.set(obj2, "metadata");
+console.log(Weakmap)
+obj2 = null
+console.log(Weakmap)
+
+
+
+// Set in JavaScript
+
+const set = new Set([1, 2,4, 5, 2, 1, 3]);
+set.add(45);
+set.delete(45);
+console.log(set.has(4));
+
+// set
+console.log(set)
+
+
+
+// Question 1: Union of two array.
+
+const arr1 = [1, 4, 6, 2, 1, 3];
+const arr2 = [7, 8, 1, 9, 3];
+console.log([...new Set([...arr1, ...arr2])]);
+
+
+// Question 2: Intersection of two array.
+var intersection = function(nums1, nums2) {
+    // let result = [];
+    // for(let i=0; i<nums1.length; i++){
+    //     for(let j=0; j<nums2.length; j++){
+    //         if(nums1[i] === nums2[j] && !result.find((x) => x === nums1[i])){
+    //             result.push(nums1[i]);
+    //             break
+    //         }
+    //     }
+    // }
+    // return result;
+
+    // method 2
+
+
+    let result = new Set();
+    let nums2Set = new Set(nums2);
+    for(let i=0; i<nums1.length; i++){
+        if(nums2Set.has(nums1[i]) && !result.has(nums1[i])){
+            result.add(nums1[i]);
+            break;
+        }
+    }
+    return [...result];
+};
