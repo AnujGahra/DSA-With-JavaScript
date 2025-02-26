@@ -39,6 +39,23 @@ var frequencySort = function(s) {
     }
     return resultString;
 };
+const obj1 = {};
+const arr = [1000000].fill(0).map(() => Math.random()*10000000);
+console.time("Obj time");
+
+for(let i=0; i<arr.length; i++){
+    obj[i] = arr[i]
+}
+
+console.timeEnd("Obj Time")
+
+const map1 = new Map()
+console.time("map time")
+
+for(let i=0; i<arr.length; i++){
+    map.set(i, arr[i])
+}
+console.timeEnd("Map Time")
 
 
-// 6:16:00
+// WeakMap in JavaScript
